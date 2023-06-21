@@ -14,8 +14,6 @@ if [ "$LATEST_VERSION" != "v$CURRENT_VERSION" ] && [ -n "$LATEST_VERSION" ]; the
     echo "Updating via https://cpp.kmfg.dev..."
     curl cpp.kmfg.dev | bash &> /dev/null
     echo "Update complete. Please re-run your command."
-    # refresh the shell
-    exec "$SHELL"
     exit 0
   fi
 fi

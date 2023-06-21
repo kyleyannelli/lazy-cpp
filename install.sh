@@ -85,3 +85,6 @@ fi
 
 # Copy the man page
 sudo cp docs/lazy-cpp.1 "$MAN_PATH"
+
+# Refresh their shell
+exec "$SHELL"
