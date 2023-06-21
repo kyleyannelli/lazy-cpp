@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$SCRIPT_DIR/headers.sh"
+source "$SCRIPT_DIR/function_scripts/headers.sh"
 
 usage() {
     echo -e "\033[1;36mUsage: lazy-cpp [class_name] [-g|--generate] [-d|--directory <path>]\033[0m"
@@ -38,6 +38,10 @@ while (( "$#" )); do
       ;;
     -rm|--remove)
       remove_files=1
+      shift
+      ;;
+    -gm|--generate-cmake)
+      generate_cmake=1
       shift
       ;;
     --) # end argument parsing

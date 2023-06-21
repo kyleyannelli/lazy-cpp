@@ -14,6 +14,7 @@ if [ "$(ls -A "$SCRIPT_DIR")" ]; then
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         rm -r $SCRIPT_DIR/*
         echo "Deleted all contents in $SCRIPT_DIR."
+        mkdir -p "$SCRIPT_DIR"/function_scripts
     else
         echo "Aborted. Install script did not complete."
         exit 1
@@ -22,6 +23,7 @@ fi
 
 # Copy the scripts
 cp src/*.sh "$SCRIPT_DIR"
+cp src/function_scripts/*.sh "$SCRIPT_DIR/function_scripts"
 
 # Check the operating system
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then

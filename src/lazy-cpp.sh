@@ -1,8 +1,9 @@
 #!/bin/bash
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-generate_files=0
-remove_files=0
+generate_files=0 # generate CMake Project with main.cpp and CMakeLists.txt
+generate_cmake=0 # generate CMakeLists.txt from existing files
+remove_files=0 # remove class from CMakeLists.txt and delete .cpp and .h files
 
 source "$SCRIPT_DIR/welcome.sh"
 
@@ -19,6 +20,11 @@ then
     src_directory=$src_directory/$(echo $directory | sed 's:/*$::')
     # make the directory if it doesn't exist
     mkdir -p $src_directory
+fi
+
+if [ $generate_cmake -eq 1 ]; then
+    source "$SCRIPT_DIR/generate_cmake.sh"
+    exit 0
 fi
 
 if [ $remove_files -eq 1 ]; then
