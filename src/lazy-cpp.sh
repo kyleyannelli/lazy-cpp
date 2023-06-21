@@ -15,7 +15,6 @@ fi
 # Make sure user did not pass --no-update flag
 if [ "$1" != "--no-update" ]; then
     source "$SCRIPT_DIR/welcome.sh"
-    echo "Checking for updates..."
     source "$SCRIPT_DIR/updater.sh"
 fi
 
