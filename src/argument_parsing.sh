@@ -40,8 +40,26 @@ while (( "$#" )); do
       remove_files=1
       shift
       ;;
+    -v|--version)
+      # display version in bright red
+      echo -e "\033[1;31mLazy-CPP Version: $CPP_LAZY_VERSION\033[0m"
+      exit 0
+      ;;
+    -r|--run)
+      cmake .
+      make
+      ./$project_name
+      exit 0
+      ;;
     -gm|--generate-cmake)
       generate_cmake=1
+      shift
+      ;;
+    -um|--update-cmake)
+      update_cmake=1
+      shift
+      ;;
+    --no-update) # do nothing as updates are handled before arg parse
       shift
       ;;
     --) # end argument parsing
