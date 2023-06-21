@@ -68,4 +68,13 @@ fi
 
 # finally copy docs/lazy-cpp.1 to /usr/local/share/man/man1/
 echo "If you want to install the man page you'll need to have sudo privileges."
-sudo cp docs/lazy-cpp.1 /usr/local/share/man/man1/
+MAN_PATH="/usr/local/share/man/man1/"
+
+# Check if the man path exists
+if [ ! -d "$MAN_PATH" ]; then
+  echo "Man path does not exist. Creating it now..."
+  sudo mkdir -p "$MAN_PATH"
+fi
+
+# Copy the man page
+sudo cp docs/lazy-cpp.1 "$MAN_PATH"
