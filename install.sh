@@ -1,10 +1,11 @@
 #!/bin/bash
 
 SCRIPT_DIR="$HOME/.local/bin/kmfg/lazy-cpp"
-VERSION="0.1.3-beta"
+VERSION="0.2.2-beta"
 
 # Create the directory if it doesn't exist
 mkdir -p "$SCRIPT_DIR"
+mkdir -p "$SCRIPT_DIR"/function_scripts
 
 # Check if the directory is not empty
 if [ "$(ls -A "$SCRIPT_DIR")" ]; then
@@ -14,6 +15,7 @@ if [ "$(ls -A "$SCRIPT_DIR")" ]; then
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         rm -r $SCRIPT_DIR/*
         echo "Deleted all contents in $SCRIPT_DIR."
+        mkdir -p "$SCRIPT_DIR"/function_scripts
     else
         echo "Aborted. Install script did not complete."
         exit 1
@@ -21,14 +23,8 @@ if [ "$(ls -A "$SCRIPT_DIR")" ]; then
 fi
 
 # Copy the scripts
-cp src/lazy-cpp.sh "$SCRIPT_DIR"
-cp src/argument_parsing.sh "$SCRIPT_DIR"
-cp src/load_or_create_settings.sh "$SCRIPT_DIR"
-cp src/generate_files.sh "$SCRIPT_DIR"
-cp src/check_cmakelists.sh "$SCRIPT_DIR"
-cp src/create_class_files.sh "$SCRIPT_DIR"
-cp src/welcome.sh "$SCRIPT_DIR"
-cp src/remove_class_files.sh "$SCRIPT_DIR"
+cp src/*.sh "$SCRIPT_DIR"
+cp src/function_scripts/*.sh "$SCRIPT_DIR/function_scripts"
 
 # Check the operating system
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -39,7 +35,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
         suffix="''"
 else
         # Unknown.
-        echo "Unknown operating system. Exiting."
+        source "$SCRIPT_DIR"/headers.sh
+        error_start_banner
+        echo "Unknown operating system."
+        echo "If you think this a mistake create an issue at https://github.com/kyleyannelli/lazy-cpp"
         exit 1
 fi
 
@@ -72,15 +71,22 @@ else
     echo "export CPP_LAZY_VERSION=$VERSION"
 fi
 
+touch "$SCRIPT_DIR"/.lazycpp-config
+
 # finally copy docs/lazy-cpp.1 to /usr/local/share/man/man1/
 echo "If you want to install the man page you'll need to have sudo privileges."
 MAN_PATH="/usr/local/share/man/man1/"
 
 # Check if the man path exists
 if [ ! -d "$MAN_PATH" ]; then
+  source "$SCRIPT_DIR"/headers.sh
+  info_start_banner
   echo "Man path does not exist. Creating it now..."
   sudo mkdir -p "$MAN_PATH"
 fi
 
 # Copy the man page
 sudo cp docs/lazy-cpp.1 "$MAN_PATH"
+
+# Refresh their shell
+exec "$SHELL"

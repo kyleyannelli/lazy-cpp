@@ -44,23 +44,11 @@ project_name=$(awk -F'[()]' '/project/ {print $2}' CMakeLists.txt)
 # If the flag is set, add the files to the CMakeLists.txt
 if [ "$add_to_cmakelists" = "true" ]
 then
-    # Check if the file is already listed in the CMakeLists.txt
-    if ! grep -q "$src_directory/$className.cpp" CMakeLists.txt
-    then
-        # check the operating system
-        if [[ "$OSTYPE" == "darwin"* ]]; then
-            # macOS requires an empty string argument after -i
-            sed -i '' "/add_executable($project_name/ s|$project_name|$project_name $src_directory/$className.cpp|" CMakeLists.txt
-            sed -i '' "/add_executable($project_name/ s|$project_name|$project_name $src_directory/$className.h|" CMakeLists.txt
-        else
-            # Linux can use -i without an argument
-            sed -i "/add_executable($project_name/ s|$project_name|$project_name $src_directory/$className.cpp|" CMakeLists.txt
-            sed -i "/add_executable($project_name/ s|$project_name|$project_name $src_directory/$className.h|" CMakeLists.txt
-        fi
-        echo "$className.cpp & $className.h added to CMakeLists.txt"
-    else
-        echo "$src_directory/$className.cpp is already listed in CMakeLists.txt"
-    fi
+    source "$SCRIPT_DIR/function_scripts/adjust_cmake.sh"
+    remove_exec_parenthesis
+    add_files $src_directory/$className.cpp
+    add_files $src_directory/$className.h
+    add_exec_parenthesis
 fi
 
 echo "Created $className.h & $className.cpp in $src_directory"

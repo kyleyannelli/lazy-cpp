@@ -1,15 +1,16 @@
 #!/bin/bash
-
+source "$SCRIPT_DIR/function_scripts/headers.sh"
 # Check if CMakeLists.txt exists in the current directory
 if [ ! -f ./CMakeLists.txt ]; then
     echo
-    printf "\e[91m*****START ERROR*****\e[0m\n"
+    error_start_banner
     echo "Please create a CMakeLists.txt file or make sure you are in your projects root directory, then rerun the script"
-    printf "\e[91m*****END ERROR*****\e[0m\n"
+    error_end_banner
     echo
-    printf "\e[94m*****START INFO*****\e[0m\n"
+    info_start_banner
     echo "Note you can use the -g or --generate flag to generate a base CMake project"
-    printf "\e[94m*****END INFO*****\e[0m\n"
+    echo "You can use -gm or --generate-make to generate CMake from existing source files"
+    info_end_banner
     echo
     exit 1
 fi
