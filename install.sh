@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$HOME/.local/bin/kmfg/lazy-cpp"
-VERSION="0.1.3-beta"
+VERSION="0.1.4-beta"
 
 # Create the directory if it doesn't exist
 mkdir -p "$SCRIPT_DIR"
@@ -29,6 +29,7 @@ cp src/check_cmakelists.sh "$SCRIPT_DIR"
 cp src/create_class_files.sh "$SCRIPT_DIR"
 cp src/welcome.sh "$SCRIPT_DIR"
 cp src/remove_class_files.sh "$SCRIPT_DIR"
+cp src/updater.sh "$SCRIPT_DIR"
 
 # Check the operating system
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then

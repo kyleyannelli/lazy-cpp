@@ -6,6 +6,10 @@ remove_files=0
 
 source "$SCRIPT_DIR/welcome.sh"
 
+# Check for updates
+echo "Checking for updates..."
+source "$SCRIPT_DIR/updater.sh"
+
 source "$SCRIPT_DIR/argument_parsing.sh"
 source "$SCRIPT_DIR/load_or_create_settings.sh"
 
