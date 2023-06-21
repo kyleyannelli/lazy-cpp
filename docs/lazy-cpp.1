@@ -1,0 +1,40 @@
+.\" Manpage for lazy-cpp
+.\" Create an issue on https://github.com/kyleyannelli/lazy-pp to report errors, bugs, or typos.
+.TH man 8 "20 June 2023" "1.0" "lazy-cpp man page"
+.SH NAME
+lazy-cpp \- a tool that makes C++ project setup and class generation easier. We are lazy.
+.SH SYNOPSIS
+lazy-cpp [class_name] [-g|--generate] [-d|--directory <path>]
+.SH DESCRIPTION
+lazy-cpp is a bash script that helps to generate CMake project and manage C++ classes.
+.SH OPTIONS
+.TP
+\fB-g, --generate\fR
+Generate a new CMake project. CMakeLists.txt and a main.cpp will be created for you.
+.TP
+\fB-d, --directory <path>\fR
+Specify the directory for your .cpp and .h files. This directory will be AFTER/IN your source directory.
+.TP
+\fB-rm, --remove\fR
+Remove the class files. This will delete the .cpp & .h files, as well as remove them from CMakeLists.txt.
+.TP
+\fB-h, --help\fR
+Display this help message.
+.SH EXAMPLES
+.IP "Generate a new CMake project:"
+lazy-cpp -g
+.IP "Generate a new class with .cpp & .h files:"
+lazy-cpp your_new_class
+.IP "Specify the directory for your .cpp and .h files:"
+lazy-cpp your_new_class -d path/to/your/directory
+.IP "Remove the class files:"
+lazy-cpp your_old_class -rm
+.IP "Display the help message:"
+lazy-cpp -h
+.SH SEE ALSO
+cmake(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Kyle Yannelli (KMFG)
+

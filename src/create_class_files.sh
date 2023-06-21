@@ -51,15 +51,17 @@ then
         if [[ "$OSTYPE" == "darwin"* ]]; then
             # macOS requires an empty string argument after -i
             sed -i '' "/add_executable($project_name/ s|$project_name|$project_name $src_directory/$className.cpp|" CMakeLists.txt
+            sed -i '' "/add_executable($project_name/ s|$project_name|$project_name $src_directory/$className.h|" CMakeLists.txt
         else
             # Linux can use -i without an argument
             sed -i "/add_executable($project_name/ s|$project_name|$project_name $src_directory/$className.cpp|" CMakeLists.txt
+            sed -i "/add_executable($project_name/ s|$project_name|$project_name $src_directory/$className.h|" CMakeLists.txt
         fi
-        echo "$className.cpp added to CMakeLists.txt"
+        echo "$className.cpp & $className.h added to CMakeLists.txt"
     else
         echo "$src_directory/$className.cpp is already listed in CMakeLists.txt"
     fi
 fi
 
-echo "Created $className.h and $className.cpp in $src_directory"
+echo "Created $className.h & $className.cpp in $src_directory"
 

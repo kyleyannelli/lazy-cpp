@@ -1,12 +1,15 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage: lazy-cpp [-g|--generate] [-d|--directory <path>]"
-    echo "Options:"
-    echo "  -g, --generate             Generate a new CMake project. CMakeLists.txt and a main.cpp will be created for you."
-    echo "  -d, --directory <path>     Specify the directory for your .cpp and .h files. This directory will be AFTER/IN your source directory."
-    echo "  -h, --help                 Display this help message."
-    echo "Lazy-CPP Install Location: $(dirname $0)"
+    echo -e "\033[1;36mUsage: lazy-cpp [class_name] [-g|--generate] [-d|--directory <path>]\033[0m"
+    echo -e "\033[1;32mSimply run 'lazy-cpp your_new_class' to create a new class in your source directory.\033[0m"
+    echo -e "\033[1;32mPlease check the .lazycpp file for your settings if you have already set them.\033[0m"
+    echo -e "\033[1;34mOptions:\033[0m"
+    echo -e "\033[1;35m  -g, --generate             Generate a new CMake project. CMakeLists.txt and a main.cpp will be created for you.\033[0m"
+    echo -e "\033[1;35m  -d, --directory <path>     Specify the directory for your .cpp and .h files. This directory will be AFTER/IN your source directory.\033[0m"
+    echo -e "\033[1;35m  -rm, --remove              Remove the class files. This will delete the .cpp & .h files, as well as remove them from CMakeLists.txt.\033[0m"
+    echo -e "\033[1;35m  -h, --help                 Display this help message.\033[0m"
+    echo -e "\033[1;33mLazy-CPP Install Location: $(dirname $0)\033[0m"
     exit 1
 }
 
@@ -49,4 +52,3 @@ while (( "$#" )); do
 done
 # set positional arguments in their proper place
 eval set -- "$PARAMS"
-

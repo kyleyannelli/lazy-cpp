@@ -19,12 +19,12 @@ then
 
     # Create the CMakeLists.txt file
     echo "cmake_minimum_required(VERSION $cmake_version)
-    project($project_name)
+project($project_name)
 
-    set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
 
-    # Add the executable
-    add_executable($project_name)" > CMakeLists.txt
+# Add the executable
+add_executable($project_name)" > CMakeLists.txt
     echo "Created CMakeLists.txt"
 
     # Create the source directory if it doesn't exist

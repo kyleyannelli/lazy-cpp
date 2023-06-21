@@ -26,13 +26,14 @@ if [ $generate_files -eq 1 ]; then
     source "$SCRIPT_DIR/generate_files.sh"
 fi
 
+# check if the user provided a class name and we aren't generating files
+if [ $# -eq 0 ] && [ $generate_files -eq 0 ]; then
+      echo "Please provide a class name (without .cpp or .h extension)."
+      exit 1
+fi
+
 source "$SCRIPT_DIR/check_cmakelists.sh"
 
 if [ $generate_files -eq 0 ]; then
-  if [ $# -eq 0 ]; then
-      echo "Please provide a class name."
-      exit 1
-  fi
-
   source "$SCRIPT_DIR/create_class_files.sh"
 fi
