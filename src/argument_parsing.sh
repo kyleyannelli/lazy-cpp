@@ -8,9 +8,12 @@ usage() {
     echo -e "\033[1;32mPlease check the .lazycpp file for your settings if you have already set them.\033[0m"
     echo -e "\033[1;34mOptions:\033[0m"
     echo -e "\033[1;35m  -g, --generate             Generate a new CMake project. CMakeLists.txt and a main.cpp will be created for you.\033[0m"
+    echo -e "\033[1;35m  -gm, --generate-cmake      Generate CMakeLists.txt from existing source files.\033[0m"
+    echo -e "\033[1;35m  -um, --update-cmake        Update existing CMakeLists.txt with new classes that may have been manually added.\033[0m"
     echo -e "\033[1;35m  -d, --directory <path>     Specify the directory for your .cpp and .h files. This directory will be AFTER/IN your source directory.\033[0m"
     echo -e "\033[1;35m  -rm, --remove              Remove the class files. This will delete the .cpp & .h files, as well as remove them from CMakeLists.txt.\033[0m"
     echo -e "\033[1;35m  -h, --help                 Display this help message.\033[0m"
+    echo -e "\033[1;35m  -v, --version              Display the version of Lazy-CPP.\033[0m"
     echo -e "\033[1;33mLazy-CPP Install Location: $(dirname $0)\033[0m"
     exit 1
 }
