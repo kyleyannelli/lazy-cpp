@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$SCRIPT_DIR/headers.sh"
+
 usage() {
     echo -e "\033[1;36mUsage: lazy-cpp [class_name] [-g|--generate] [-d|--directory <path>]\033[0m"
     echo -e "\033[1;32mSimply run 'lazy-cpp your_new_class' to create a new class in your source directory.\033[0m"
@@ -24,8 +26,10 @@ while (( "$#" )); do
         directory=$2
         shift 2
       else
-        echo "Error: Argument for $1 is missing. Specify the directory beyond your source." >&2
+        error_start_banner
+        echo "Argument for $1 is missing. Specify the directory beyond your source." >&2
         echo "Example, 'lazy-cpp physics_engine -d math' will create files in ./src/math/physics_engine.* if your source directory is set as src." >&2
+        error_end_banner
         exit 1
       fi
       ;;
@@ -41,7 +45,9 @@ while (( "$#" )); do
       break
       ;;
     -*|--*=) # unsupported flags
+      error_start_banner
       echo "Error: Unsupported flag $1" >&2
+      error_end_banner
       exit 1
       ;;
     *) # preserve positional arguments

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$HOME/.local/bin/kmfg/lazy-cpp"
-VERSION="0.1.4-beta"
+VERSION="0.2.0-beta"
 
 # Create the directory if it doesn't exist
 mkdir -p "$SCRIPT_DIR"
@@ -21,15 +21,7 @@ if [ "$(ls -A "$SCRIPT_DIR")" ]; then
 fi
 
 # Copy the scripts
-cp src/lazy-cpp.sh "$SCRIPT_DIR"
-cp src/argument_parsing.sh "$SCRIPT_DIR"
-cp src/load_or_create_settings.sh "$SCRIPT_DIR"
-cp src/generate_files.sh "$SCRIPT_DIR"
-cp src/check_cmakelists.sh "$SCRIPT_DIR"
-cp src/create_class_files.sh "$SCRIPT_DIR"
-cp src/welcome.sh "$SCRIPT_DIR"
-cp src/remove_class_files.sh "$SCRIPT_DIR"
-cp src/updater.sh "$SCRIPT_DIR"
+cp src/*.sh "$SCRIPT_DIR"
 
 # Check the operating system
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -40,7 +32,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
         suffix="''"
 else
         # Unknown.
-        echo "Unknown operating system. Exiting."
+        source "$SCRIPT_DIR"/headers.sh
+        error_start_banner
+        echo "Unknown operating system."
+        echo "If you think this a mistake create an issue at https://github.com/kyleyannelli/lazy-cpp"
         exit 1
 fi
 
@@ -79,6 +74,8 @@ MAN_PATH="/usr/local/share/man/man1/"
 
 # Check if the man path exists
 if [ ! -d "$MAN_PATH" ]; then
+  source "$SCRIPT_DIR"/headers.sh
+  info_start_banner
   echo "Man path does not exist. Creating it now..."
   sudo mkdir -p "$MAN_PATH"
 fi

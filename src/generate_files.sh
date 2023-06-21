@@ -1,10 +1,10 @@
 #!/bin/bash
-
+source "$SCRIPT_DIR/headers.sh"
 ### START GENERATION ###
 if [ -f ./CMakeLists.txt ]; then
-    printf "\e[91m*****START ERROR*****\e[0m\n"
+    error_start_banner
     echo "CMakeLists.txt found in the current directory. Cannot generate project template!"
-    printf "\e[91m*****END ERROR*****\e[0m\n"
+    error_end_banner
     exit 1
 fi
 echo -n "Generate CMakeLists.txt? [y/n]: "
