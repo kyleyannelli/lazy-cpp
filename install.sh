@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$HOME/.local/bin/kmfg/lazy-cpp"
-VERSION="0.2.1-beta"
+VERSION="0.2.2-beta"
 
 # Create the directory if it doesn't exist
 mkdir -p "$SCRIPT_DIR"
@@ -70,6 +70,8 @@ else
     echo "alias lazy-cpp='$SCRIPT_DIR/lazy-cpp.sh'"
     echo "export CPP_LAZY_VERSION=$VERSION"
 fi
+
+touch "$SCRIPT_DIR"/.lazycpp-config
 
 # finally copy docs/lazy-cpp.1 to /usr/local/share/man/man1/
 echo "If you want to install the man page you'll need to have sudo privileges."
