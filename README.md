@@ -12,6 +12,9 @@
 ```
 For the CLI programmers, lazy-cpp creates CMake projects, and main.cpp from a command. It also generates .cpp &amp; .h files while managing the CMakeLists.txt for you! Try it out.
 # Getting Started
+### Single Command Install!
+1. Run `curl cpp.kmfg.dev | bash` and you're done! Note: On linux you may have to manually install the man page, but the -h or --help achieves the same
+### 3 Step Method
 1. In ~/Downloads/ or /tmp/ clone and cd into the repository with `git clone https://github.com/kyleyannelli/lazy-cpp && cd lazy-cpp`
 2. Run `chmod u+x install.sh && ./install.sh`
 3. Installed! Just make sure to run `exec bash_or_zsh` OR `source ~./bash_or_zsh.rc`
