@@ -30,26 +30,33 @@ cp src/create_class_files.sh "$SCRIPT_DIR"
 cp src/welcome.sh "$SCRIPT_DIR"
 cp src/remove_class_files.sh "$SCRIPT_DIR"
 
+# Determine if the operating system is macOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    suffix='' # macOS
+else
+    suffix= # Linux
+fi
+
 # Add the alias and version #
 if [ -f "$HOME/.bashrc" ]; then
     if grep -q "^alias lazy-cpp=" ~/.bashrc; then
-        sed -i '' '/alias lazy-cpp=/d' ~/.bashrc
+        sed -i$suffix '/alias lazy-cpp=/d' ~/.bashrc
     fi
     echo "alias lazy-cpp='$SCRIPT_DIR/lazy-cpp.sh'" >> ~/.bashrc
 
     if grep -q "^export CPP_LAZY_VERSION=" ~/.bashrc; then
-        sed -i '' '/export CPP_LAZY_VERSION=/d' ~/.bashrc
+        sed -i$suffix '/export CPP_LAZY_VERSION=/d' ~/.bashrc
     fi
     echo "export CPP_LAZY_VERSION=$VERSION" >> ~/.bashrc
     echo "Alias added to .bashrc. Please run 'source ~/.bashrc' to apply changes."
 elif [ -f "$HOME/.zshrc" ]; then
     if grep -q "^alias lazy-cpp=" ~/.zshrc; then
-        sed -i '' '/alias lazy-cpp=/d' ~/.zshrc
+        sed -i$suffix '/alias lazy-cpp=/d' ~/.zshrc
     fi
     echo "alias lazy-cpp='$SCRIPT_DIR/lazy-cpp.sh'" >> ~/.zshrc
 
     if grep -q "^export CPP_LAZY_VERSION=" ~/.zshrc; then
-        sed -i '' '/export CPP_LAZY_VERSION=/d' ~/.zshrc
+        sed -i$suffix '/export CPP_LAZY_VERSION=/d' ~/.zshrc
     fi
     echo "export CPP_LAZY_VERSION=$VERSION" >> ~/.zshrc
     echo "Alias added to .zshrc. Please run 'source ~/.zshrc' to apply changes."
