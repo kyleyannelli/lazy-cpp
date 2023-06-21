@@ -1,10 +1,11 @@
 #!/bin/bash
 
 SCRIPT_DIR="$HOME/.local/bin/kmfg/lazy-cpp"
-VERSION="0.2.0-beta"
+VERSION="0.2.1-beta"
 
 # Create the directory if it doesn't exist
 mkdir -p "$SCRIPT_DIR"
+mkdir -p "$SCRIPT_DIR"/function_scripts
 
 # Check if the directory is not empty
 if [ "$(ls -A "$SCRIPT_DIR")" ]; then
