@@ -16,12 +16,14 @@ then
     read -p "Project Name: " project_name
     read -p "Minimum Required CMake Version [Default: 3.5]: " cmake_version
     cmake_version=${cmake_version:-3.5}
+    read -p "CPP Standard? [Default: 17]: " cpp_standard
+    cpp_standard=${cpp_standard:-17}
 
     # Create the CMakeLists.txt file
     echo "cmake_minimum_required(VERSION $cmake_version)
 project($project_name)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD $cpp_standard)
 
 # Add the executable
 add_executable($project_name)" > CMakeLists.txt
