@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$HOME/.local/bin/kmfg/lazy-cpp"
-VERSION="0.1.2-beta"
+VERSION="0.1.3-beta"
 
 # Create the directory if it doesn't exist
 mkdir -p "$SCRIPT_DIR"
