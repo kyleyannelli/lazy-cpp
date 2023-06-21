@@ -45,7 +45,7 @@ To go in more detail...
 - `-rm` expects a class_name before it and will remove the .cpp and .h files in the source directory. If your files are in a different directory please specify with `-d` as shown below.
 
 ```
- kyle@Kyles-MacBook-Pro ~/Tools/tmp: lazy-cpp hey -rm -d balls
+ kyle@Kyles-MacBook-Pro ~/Tools/tmp: lazy-cpp your_class_name -rm -d directory_name
 
   ██╗      █████╗ ███████╗██╗   ██╗      ██████╗██████╗ ██████╗
   ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝     ██╔════╝██╔══██╗██╔══██╗
@@ -61,7 +61,7 @@ Files deleted.
 Removed from CMakeLists.txt.
 Directory is empty, do you want to delete it? [y/n]
 y
-Directory src/balls deleted.
+Directory src/directory_name deleted.
 ```
 # Issues
 Just make an issue on this repo. Provide as much detail as you can. Specify expected vs actual behavior. Copy and paste from your terminal, the whole 9. Thank you.
