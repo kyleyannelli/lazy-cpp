@@ -7,7 +7,7 @@
   ██║     ██╔══██║ ███╔╝    ╚██╔╝ ╚════╝██║     ██╔═══╝ ██╔═══╝
   ███████╗██║  ██║███████╗   ██║        ╚██████╗██║     ██║
   ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝         ╚═════╝╚═╝     ╚═╝
-  Version 0.2.2-beta | Written by Kyle Yannelli (KMFG)
+  Version 0.2.3-beta | Written by Kyle Yannelli (KMFG)
 
 ```
 For the CLI programmers, lazy-cpp creates CMake projects, and main.cpp from a command. It also generates .cpp &amp; .h files while managing the CMakeLists.txt for you! Try it out.
